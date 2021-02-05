@@ -126,7 +126,7 @@ label-background = ${colors.background-alt}
 
 [module/updates]
 type = custom/script
-exec = /home/avano/.config/i3/scripts/updates-dnf.sh
+exec = ~/.config/polybar/scripts/updates-dnf.sh
 format = "%{T2}%{F#7780a1}%{F-}%{T-} <label> "
 format-background = ${colors.background-alt}
 interval = 3600
@@ -151,7 +151,7 @@ content = "%{T4}%{T-}"
 
 [module/spotify]
 type = custom/script
-exec = ~/.config/i3/scripts/spotify.sh
+exec = ~/.config/polybar/scripts/spotify.sh
 format = %{F#1db954}%{F-} <label>
 label-maxlen=100
 format-background = ${colors.background-alt}
@@ -159,7 +159,7 @@ interval = 1
 
 [module/network]
 type = custom/script
-exec = /home/avano/.config/i3/scripts/network-traffic.sh
+exec = ~/.config/polybar/scripts/network-traffic.sh
 format = %{T2}%{F7780a1}李%{F-}%{T-}<label>
 format-background = ${colors.background-alt}
 label-minlen = 22
@@ -168,28 +168,28 @@ tail = true
 
 [module/stock]
 type = custom/script
-exec = /home/avano/.config/i3/scripts/stock.sh
+exec = ~/.config/polybar/scripts/stock.sh
 format = <label>
 format-background = ${colors.background-alt}
 interval = 300
 
 [module/bitcoin]
 type = custom/script
-exec = /home/avano/.config/i3/scripts/bitcoin.sh
+exec = ~/.config/polybar/scripts/bitcoin.sh
 format = "%{T2}%{F7780a1} ﴑ%{F-}%{T-} <label>"
 format-background = ${colors.background-alt}
 interval = 300
 
 [module/ripple]
 type = custom/script
-exec = /home/avano/.config/i3/scripts/ripple.sh
+exec = ~/.config/polybar/scripts/ripple.sh
 format = "%{T2}%{F7780a1} Ꝛ%{F-}%{T-} <label>"
 format-background = ${colors.background-alt}
 interval = 300
 
 [module/weather]
 type = custom/script
-exec = /home/avano/.config/i3/scripts/weather.sh
+exec = ~/.config/polybar/scripts/weather.sh
 format = <label>
 format-background = ${colors.background-alt}
 interval = 60
