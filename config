@@ -1,0 +1,204 @@
+[colors]
+background = #E62B303B
+background-alt = #1f222d
+foreground = #ffffff
+foreground-alt = #7780a1
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/example]
+monitor = ${env:MONITOR}
+width = 100%
+height = 27
+radius = 0.0
+fixed-center = false
+enable-ipc=true
+background = ${colors.background}
+foreground = ${colors.foreground}
+bottom = true
+line-size = 1
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = Inconsolata for Powerline:style=Medium:pixelsize=11;2
+font-1 = Iosevka Nerd Font:style=Regular:size=16;4
+
+modules-left = redhat glyph-right i3 glyph-left weather glyph-right glyph-left stock bitcoin ripple glyph-right
+modules-center = glyph-left spotify glyph-right
+modules-right = glyph-left network cpu memory filesystem xkeyboard glyph-right glyph-left updates glyph-right glyph-left date
+
+tray-position = right
+tray-background = ${colors.background-alt}
+
+wm-restack = i3
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/redhat]
+type = custom/text
+content-background = ${colors.background-alt}
+content-foreground = ${colors.background-alt}
+content = " %{T2}%{F#FFFFFF}%{F-}%{T-}"
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout = " %{F#7780a1}%{F-} %layout%"
+format-background = ${colors.background-alt}
+
+[module/filesystem]
+type = internal/fs
+interval = 5
+fixed-values = true
+mount-0 = /
+
+label-mounted = " %{T2}%{F#7780a1}%{F-}%{T-} %free% "
+label-mounted-background = ${colors.background-alt}
+
+[module/i3]
+type = internal/i3
+format = " <label-state> <label-mode>"
+index-sort = true
+wrapping-scroll = false
+
+padding = 1
+underline = #3e445b
+urgent-underline = #f46053
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+strip-wsnumbers = true
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-foreground = #FFFFFF
+label-focused-underline = ${self.underline}
+label-focused-padding = ${self.padding}
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-foreground = ${colors.foreground-alt}
+label-unfocused-padding = ${self.padding}
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-foreground = ${colors.foreground-alt}
+label-visible-padding = ${self.padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-foreground = ${colors.foreground-alt}
+label-urgent-padding = ${self.padding}
+label-urgent-underline = ${self.urgent-underline}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = "%{F#7780a1}%{F-} %percentage:2%%  "
+label-background = ${colors.background-alt}
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = "%{T4}%{F#7780a1}%{F-}%{T-} %gb_used% "
+label-background = ${colors.background-alt}
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%d.%m.%Y"
+time = %H:%M:%S
+
+label = " %{F#7780a1} %{F-}%date% %{F#7780a1}%{F-} %time%"
+label-background = ${colors.background-alt}
+
+[module/updates]
+type = custom/script
+exec = /home/avano/.config/i3/scripts/updates-dnf.sh
+format = "%{T2}%{F#7780a1}%{F-}%{T-} <label> "
+format-background = ${colors.background-alt}
+interval = 3600
+
+[module/glyph-top]
+type = custom/text
+content-background = ${colors.background}
+content-foreground = ${colors.background-alt}
+content = "%{T2}%{T-}"
+
+[module/glyph-right]
+type = custom/text
+content-background = ${colors.background}
+content-foreground = ${colors.background-alt}
+content = "%{T2}%{T-}"
+
+[module/glyph-left]
+type = custom/text
+content-background = ${colors.background}
+content-foreground = ${colors.background-alt}
+content = "%{T4}%{T-}"
+
+[module/spotify]
+type = custom/script
+exec = ~/.config/i3/scripts/spotify.sh
+format = %{F#1db954}%{F-} <label>
+label-maxlen=100
+format-background = ${colors.background-alt}
+interval = 1
+
+[module/network]
+type = custom/script
+exec = /home/avano/.config/i3/scripts/network-traffic.sh
+format = %{T2}%{F7780a1}李%{F-}%{T-}<label>
+format-background = ${colors.background-alt}
+label-minlen = 22
+label-alignment = center
+tail = true
+
+[module/stock]
+type = custom/script
+exec = /home/avano/.config/i3/scripts/stock.sh
+format = <label>
+format-background = ${colors.background-alt}
+interval = 300
+
+[module/bitcoin]
+type = custom/script
+exec = /home/avano/.config/i3/scripts/bitcoin.sh
+format = "%{T2}%{F7780a1} ﴑ%{F-}%{T-} <label>"
+format-background = ${colors.background-alt}
+interval = 300
+
+[module/ripple]
+type = custom/script
+exec = /home/avano/.config/i3/scripts/ripple.sh
+format = "%{T2}%{F7780a1} Ꝛ%{F-}%{T-} <label>"
+format-background = ${colors.background-alt}
+interval = 300
+
+[module/weather]
+type = custom/script
+exec = /home/avano/.config/i3/scripts/weather.sh
+format = <label>
+format-background = ${colors.background-alt}
+interval = 60
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
